@@ -42,7 +42,7 @@ public class InputParser {
             commandName = Constants.COMMAND_ANALYSE;
         }
 
-        if ( COMMAND_TO_PARAM_COUNT.get(commandName) != args.length ) {
+        if (COMMAND_TO_PARAM_COUNT.containsKey(commandName) && COMMAND_TO_PARAM_COUNT.get(commandName) != args.length) {
             throw new ParkingException(Constants.ERROR_CODES.INVALID_INPUT_ARGS);
         }
 

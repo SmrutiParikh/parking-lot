@@ -1,8 +1,7 @@
 
-*out/
 *target/
 *.iml
 *.idea
-*functional_spec/
-*bin
 *pdf
+*.bundle
+*vendor

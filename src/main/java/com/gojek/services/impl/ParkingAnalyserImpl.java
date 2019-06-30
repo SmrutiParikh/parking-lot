@@ -1,15 +1,16 @@
-package parkinglot.services.impl;
+package com.gojek.services.impl;
 
-import parkinglot.constants.Constants;
-import parkinglot.exceptions.ParkingException;
-import parkinglot.models.Car;
-import parkinglot.services.IParkingAnalyser;
-import parkinglot.sinks.Sink;
+import com.gojek.constants.Constants;
+import com.gojek.exceptions.ParkingException;
+import com.gojek.models.Car;
+import com.gojek.services.IParkingAnalyser;
+import com.gojek.sinks.Sink;
+
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class ParkingAnalyserImpl implements IParkingAnalyser {
-    Sink logger;
+    private Sink logger;
 
     public ParkingAnalyserImpl(Sink logger) {
         this.logger = logger;

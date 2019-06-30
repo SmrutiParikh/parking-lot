@@ -1,13 +1,13 @@
-package parkinglot.services.impl;
+package com.gojek.services.impl;
 
-import parkinglot.constants.Constants;
-import parkinglot.models.Car;
-import parkinglot.models.MinimumDistanceParkingAlgo;
-import parkinglot.models.ParkingAlgo;
-import parkinglot.services.IParkingAdministrator;
-import parkinglot.sinks.Sink;
-import parkinglot.exceptions.ParkingException;
-import parkinglot.models.ParkingLot;
+import com.gojek.exceptions.ParkingException;
+import com.gojek.models.ParkingAlgo;
+import com.gojek.models.ParkingLot;
+import com.gojek.sinks.Sink;
+import com.gojek.constants.Constants;
+import com.gojek.models.Car;
+import com.gojek.models.MinimumDistanceParkingAlgo;
+import com.gojek.services.IParkingAdministrator;
 
 import java.util.Map;
 import java.util.Objects;
@@ -26,7 +26,7 @@ public class ParkingAdministratorImpl implements IParkingAdministrator {
     }
 
     @Override
-    public Map<Long, Car> getParkingLotData() throws ParkingException{
+    public Map<Long, Car> getParkingLotData() throws ParkingException {
         checkIfParkingNotExists();
         checkIfParkingIsEmpty();
         return parkingLot.getParkedCars();
@@ -38,7 +38,7 @@ public class ParkingAdministratorImpl implements IParkingAdministrator {
         checkIfParkingIsEmpty();
         try {
 
-            String headLine = "Slot No.<PADDING>Registration No<PADDING>Colour";
+            String headLine = "Slot No.    Registration No    Colour";
             logger.info(parkingLot.status(headLine));
         }catch (Exception e){
             throw new ParkingException(Constants.ERROR_CODES.INTERNAL_ERROR, e);

@@ -1,12 +1,13 @@
-package parkinglot.drivers;
+package com.gojek.drivers;
 
-import parkinglot.constants.Constants;
-import parkinglot.services.IParkingAdministrator;
-import parkinglot.services.impl.ParkingAnalyserImpl;
-import parkinglot.exceptions.ParkingException;
-import parkinglot.services.IParkingAnalyser;
-import parkinglot.services.impl.ParkingAdministratorImpl;
-import parkinglot.sinks.Sink;
+import com.gojek.constants.Constants;
+import com.gojek.exceptions.ParkingException;
+import com.gojek.services.IParkingAdministrator;
+import com.gojek.services.IParkingAnalyser;
+import com.gojek.services.impl.ParkingAdministratorImpl;
+import com.gojek.sinks.Sink;
+import com.gojek.services.impl.ParkingAnalyserImpl;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -16,7 +17,7 @@ import java.util.regex.Pattern;
 public class InputParser {
     private IParkingAdministrator parkingAdministrator;
     private IParkingAnalyser parkingAnalyser;
-    public static Map<String, Integer> COMMAND_TO_PARAM_COUNT = new HashMap<>();
+    public static Map<String, Integer> commandToParamCount = new HashMap<>();
 
     public InputParser(Sink sink) {
         parkingAdministrator = new ParkingAdministratorImpl(sink);
@@ -25,16 +26,16 @@ public class InputParser {
     }
 
     private void initCommandToParamsMap() {
-        COMMAND_TO_PARAM_COUNT.put(Constants.COMMAND_CREATE, 1);
-        COMMAND_TO_PARAM_COUNT.put(Constants.COMMAND_EXIT, 0);
-        COMMAND_TO_PARAM_COUNT.put(Constants.COMMAND_STATUS, 0);
-        COMMAND_TO_PARAM_COUNT.put(Constants.COMMAND_PARK, 2);
-        COMMAND_TO_PARAM_COUNT.put(Constants.COMMAND_LEAVE, 1);
-        COMMAND_TO_PARAM_COUNT.put(Constants.COMMAND_ANALYSE, 1);
-        COMMAND_TO_PARAM_COUNT = Collections.unmodifiableMap(COMMAND_TO_PARAM_COUNT);
+        commandToParamCount.put(Constants.COMMAND_CREATE, 1);
+        commandToParamCount.put(Constants.COMMAND_EXIT, 0);
+        commandToParamCount.put(Constants.COMMAND_STATUS, 0);
+        commandToParamCount.put(Constants.COMMAND_PARK, 2);
+        commandToParamCount.put(Constants.COMMAND_LEAVE, 1);
+        commandToParamCount.put(Constants.COMMAND_ANALYSE, 1);
+        commandToParamCount = Collections.unmodifiableMap(commandToParamCount);
     }
 
-    public void parseAndExecute(String line) throws ParkingException{
+    public void parseAndExecute(String line) throws ParkingException {
         String[] split = line.split(" ");
         String commandName = split[0].trim();
         String[] args = Arrays.copyOfRange(split, 1, split.length);
@@ -42,7 +43,7 @@ public class InputParser {
             commandName = Constants.COMMAND_ANALYSE;
         }
 
-        if (COMMAND_TO_PARAM_COUNT.containsKey(commandName) && COMMAND_TO_PARAM_COUNT.get(commandName) != args.length) {
+        if (commandToParamCount.containsKey(commandName) && commandToParamCount.get(commandName) != args.length) {
             throw new ParkingException(Constants.ERROR_CODES.INVALID_INPUT_ARGS);
         }
 

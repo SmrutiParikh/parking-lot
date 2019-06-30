@@ -1,7 +1,7 @@
-package parkinglot.services;
+package com.gojek.services;
 
-import parkinglot.exceptions.ParkingException;
-import parkinglot.models.Car;
+import com.gojek.exceptions.ParkingException;
+import com.gojek.models.Car;
 import java.util.Map;
 
 public interface IParkingAdministrator {

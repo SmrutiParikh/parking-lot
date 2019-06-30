@@ -1,4 +1,4 @@
-package parkinglot.models;
+package com.gojek.models;
 
 public class Car {
     private String registrationNumber;

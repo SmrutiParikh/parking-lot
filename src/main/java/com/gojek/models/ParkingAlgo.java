@@ -1,4 +1,4 @@
-package parkinglot.models;
+package com.gojek.models;
 
 public interface ParkingAlgo {
     public void addSlot(long slot);

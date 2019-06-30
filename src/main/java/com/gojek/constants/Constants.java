@@ -1,4 +1,4 @@
-package parkinglot.constants;
+package com.gojek.constants;
 
 import java.util.Collections;
 import java.util.Map;

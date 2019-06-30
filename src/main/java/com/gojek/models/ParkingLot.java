@@ -1,4 +1,4 @@
-package parkinglot.models;
+package com.gojek.models;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,18 +34,18 @@ public class ParkingLot {
     }
 
     public String status(String headline){
-        int pad = 5;
-        String padding = String.format("%-"+5+"s", "");
-        StringBuilder stringBuilder = new StringBuilder(headline.replace("<PADDING>", padding));
+        //int pad = 5;
+        //String padding = String.format("%-"+5+"s", "");
+        StringBuilder stringBuilder = new StringBuilder(headline);//.replace("<PADDING>", padding));
         for(Map.Entry<Long, Car> carEntry : parkedCars.entrySet()){
-            String padding1 = String.format("%-" + (pad + 8 - carEntry.getKey().toString().trim().length()) + "s", padding);
-            String padding2 = String.format("%-" + (pad + 15 - carEntry.getValue().getRegistrationNumber().length()) + "s", padding);
+            //String padding1 = String.format("%-" + (pad + 8 - carEntry.getKey().toString().trim().length()) + "s", padding);
+            //String padding2 = String.format("%-" + (pad + 15 - carEntry.getValue().getRegistrationNumber().length()) + "s", padding);
             stringBuilder
                     .append(System.lineSeparator())
                     .append(carEntry.getKey())
-                    .append(padding1)
+                    .append("           ")
                     .append(carEntry.getValue().getRegistrationNumber())
-                    .append(padding2)
+                    .append("      ")
                     .append(carEntry.getValue().getColor());
         }
 

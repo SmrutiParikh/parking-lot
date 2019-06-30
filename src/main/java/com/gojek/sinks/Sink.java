@@ -1,6 +1,6 @@
-package parkinglot.sinks;
+package com.gojek.sinks;
 
-import parkinglot.exceptions.ParkingException;
+import com.gojek.exceptions.ParkingException;
 
 public interface Sink {
     public void info(String message);

@@ -1,6 +1,6 @@
-package parkinglot.exceptions;
+package com.gojek.exceptions;
 
-import parkinglot.constants.Constants;
+import com.gojek.constants.Constants;
 
 public class ParkingException extends Exception {
     public ParkingException(String s, Exception e) {

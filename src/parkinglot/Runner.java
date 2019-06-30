@@ -2,10 +2,8 @@ package parkinglot;
 
 import parkinglot.constants.Constants;
 import parkinglot.drivers.InputParser;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.InputStreamReader;
+
+import java.io.*;
 
 import parkinglot.exceptions.ParkingException;
 import parkinglot.sinks.Sink;
@@ -32,10 +30,17 @@ public class Runner {
                 String line = bufferedReader.readLine();
                 if(line == null){
                     bufferedReader = new BufferedReader(in);
+
+
+                        logger.info("------------------------------------------------------\n" +
+                                "                  Waiting for Input                   \n" +
+                                "------------------------------------------------------\n");
                     continue;
                 }
                 if(line.contains(".txt")){
-                   bufferedReader = readFromFile(line);
+                    InputStreamReader fileIn = readFromFile(line);
+                    run(fileIn);
+                    logger.info("File Read completed!");
                 }
                 else {
                     if (runCommands(line)) break;
@@ -46,9 +51,9 @@ public class Runner {
         }
     }
 
-    private static BufferedReader readFromFile(String fileName) throws ParkingException{
+    private static InputStreamReader readFromFile(String fileName) throws ParkingException{
         try {
-            return new BufferedReader(new FileReader(new File(fileName)));
+            return new InputStreamReader(new FileInputStream(new File(fileName)));
         }
         catch (Exception ex){
             throw new ParkingException(Constants.ERROR_CODES.INVALID_FILE);

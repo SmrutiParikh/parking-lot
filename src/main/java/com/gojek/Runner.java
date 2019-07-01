@@ -22,7 +22,7 @@ public class Runner {
         InputStreamReader in;
         if(args.length > 0){
             try {
-                in = new InputStreamReader(new FileInputStream(new File(args[0])));
+                in = new InputStreamReader(new FileInputStream(args[0]));
             }catch (Exception e){
                 logger.error(Constants.ERROR_CODES.INVALID_FILE.getMessage(), new ParkingException(e));
                 in = new InputStreamReader(System.in);
@@ -70,7 +70,7 @@ public class Runner {
             }
             parser.parseAndExecute(line);
         }catch (ParkingException e){
-            //logger.error(e);
+            logger.error(e);
         }
         return false;
     }

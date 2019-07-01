@@ -18,4 +18,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 # 
 # Important: Above commands is just examples, please modify to suit your requirement as necessary
 
-sh $DIR/../resources/parking_lot.sh $DIR/../
+sh $DIR/../resources/parking_lot.sh $DIR/../ $1

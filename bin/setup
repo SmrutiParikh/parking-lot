@@ -7,3 +7,5 @@
 # should Just Work.
 
 mvn clean install
+cd functional_spec &&  bundle install --path vendor/bundle
+cd ../

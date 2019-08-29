@@ -2,7 +2,7 @@
 arg1=$1
 arg2=$2
 ##directory where jar file is located
-dir=resources
+dir=target
 ##jar file name
 jar_name=parkingLot-1.0-SNAPSHOT.jar
 
